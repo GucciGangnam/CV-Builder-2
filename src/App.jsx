@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// Import Hooks
+import { useState } from 'react';
+
+// import Components
+import { BasicInfo } from './Components/BasicInfo';
+import { Education } from './Components/Education';
+import { PreviewBasicInfo } from './Components/PreviewPage';
+import { PreviewEducation } from './Components/PreviewPage';
+
+// import style
 import './App.css'
 
+
+
+
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [location, setLocation] = useState('');
+
+  const [schoolName, setSchoolName] = useState('');
+  const [schoolYear, setSchoolYear] = useState('');
+  const [degree, setDegree] = useState('');
+  const [score, setScore] = useState('');
+  
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='App'>
+
+      <div className='EditComps'>
+
+        <BasicInfo 
+        fullName={fullName} setFullName={setFullName} 
+        email={email} setEmail={setEmail} 
+        phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} 
+        location={location} setLocation={setLocation}/>
+
+        <Education
+        schoolName={schoolName} setSchoolName={setSchoolName}
+        schoolYear={schoolYear} setSchoolYear={setSchoolYear}
+        degree={degree} setDegree={setDegree}
+        score={score} setScore={setScore}
+        />
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className='PreviewComps'>
+
+        <PreviewBasicInfo 
+        fullName={fullName}
+        phoneNumber={phoneNumber}
+        email={email}
+        location={location}/>
+
+        <PreviewEducation 
+        schoolName={schoolName}
+        schoolYear={schoolYear}
+        degree={degree}
+        score={score}/>
+
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+    </div>
+  );
 }
 
-export default App
+export default App;

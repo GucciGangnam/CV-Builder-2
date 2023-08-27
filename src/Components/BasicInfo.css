@@ -1,0 +1,20 @@
+.BasicInfo{ 
+    background-color: white;
+    max-width: 500px;
+    outline: 1px solid pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+    Input{ 
+        background-color: rgb(215, 215, 215);
+        width: 500px;
+        border: none;
+        border-radius: 15px;
+        font-size: 1rem;
+        padding: 10px;
+    }
