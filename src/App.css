@@ -1,18 +1,8 @@
-.App{ 
-  background-color: rgb(215, 215, 215);
+.App { 
+  background-color: rgb(33, 33, 33);
+
+  min-width: 100vw;
+  min-height: 100vh;
+
   display: flex;
-  justify-content: space-evenly;
-  height: 100vh;;
-}
-.EditComps{
-  display: flex;
-  flex-direction: column;
-
-}
-
-.PreviewComps{
-  background-color: white;
-  width: 700px;
-  height: 900px;
-
 }
