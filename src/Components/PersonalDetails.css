@@ -35,11 +35,19 @@ input{
     border-radius: 5px;
     border: none;
     padding: 10px;
+
 }
 h2{ 
     margin: 0px;
 
 }
 p{ 
-    margin: 0px;
+    margin: 5px;
+}
+
+.DDIcon{ 
+    width: 25px;;
+    height: 25px;
+    transform: rotate(180deg);
+    transition: 300ms;
 }

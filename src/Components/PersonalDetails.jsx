@@ -1,6 +1,9 @@
 // imoport Styles 
 import "./PersonalDetails.css"
 
+//import Hooks
+import { useState } from "react"
+
 export const PersonalDetails = ({fullName, setFullName, number, setNumber, email, setEmail, location, setLocation}) => { 
     const handleFullNameChange=(event)=>{ 
         setFullName(event.target.value)
@@ -14,45 +17,59 @@ export const PersonalDetails = ({fullName, setFullName, number, setNumber, email
     const handleLocationChange=(event)=>{
         setLocation(event.target.value)
     }
+    
+    const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+    const handleDropDownClick=()=>{ 
+        setIsDropDownOpen(!isDropDownOpen);
+    }
 
     
     return ( 
         <div className="PersonalDetails"> 
 
-            <button className="DropDownBtn"><h2> Personal Details</h2> V</button>
+            <button className="DropDownBtn"onClick={handleDropDownClick}>
+                <h2> Personal Details</h2> 
+                <img className="DDIcon"
+                src="src/assets/Icons/DropDown.png"
+                style={{transform: isDropDownOpen ? 'rotate(0deg)' : 'rotate(180deg)'}}
+                />
+            </button>
 
-            <p>Full Name</p>
+
+
+
+            <p style={{display: isDropDownOpen ? 'block' : 'none'}}>Full Name</p>
             <input 
             type="text"
             value={fullName}
             onChange={handleFullNameChange}
-
+            style={{display: isDropDownOpen ? 'block' : 'none'}}
             />
 
-
-
-            <p>Phone Number</p>
+            <p style={{display: isDropDownOpen ? 'block' : 'none'}}>Phone Number</p>
             <input 
             type="text"
             value={number}
             onChange={handleNumberChange}
+            style={{display: isDropDownOpen ? 'block' : 'none'}}
             />
 
-
-
-            <p>Email</p>
+            <p style={{display: isDropDownOpen ? 'block' : 'none'}}>Email</p>
             <input type="text"
             value={email}
-            onChange={handleEmailChange}/>
+            onChange={handleEmailChange}
+            style={{display: isDropDownOpen ? 'block' : 'none'}}/>
 
-
-
-
-
-            <p>Location</p>
+            <p style={{display: isDropDownOpen ? 'block' : 'none'}}>Location</p>
             <input type="text"
             value={location}
-            onChange={handleLocationChange}/>
+            onChange={handleLocationChange}
+            style={{display: isDropDownOpen ? 'block' : 'none'}}/>
+
+
+
+
+
 
         </div>
     )
