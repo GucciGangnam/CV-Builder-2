@@ -1,8 +1,33 @@
-.App { 
-  background-color: rgb(33, 33, 33);
-
-  min-width: 100vw;
-  min-height: 100vh;
-
+.App{ 
+  border: 1px solid pink;;
   display: flex;
+  justify-content: center;
 }
+
+.LeftScreen{ 
+  font-family: NotoSans, sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-width: 500px;
+}
+.RightScreen{
+  font-family: NotoSans, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+  .Preview{ 
+    min-width: 500px;
+    aspect-ratio: 1/1.14;
+    background-color: white;
+    box-shadow: 2px 2px 5px gray;
+    margin: 25px;
+  }
+
+  /*MEDIA QUERY*/
+  @media (max-width: 1000px) {
+    .App {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
