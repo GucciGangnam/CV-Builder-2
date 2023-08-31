@@ -8,26 +8,43 @@ import { NavBar } from "./Components/NavBar";
 import { ClearFill } from "./Components/ClearFill";
 import { PersonalDetails } from "./Components/PersonalDetails";
 import { useState } from "react";
+import { Education } from "./Components/Education";
+import { Experience } from "./Components/Experience";
 
 
 
 const App = () => {
-const [fullName, setFullName] = useState("")
-const [number, setNumber] = useState("")
-const [email, setEmail] = useState("")
-const [location, setLocation] = useState("")
+  //States
+  //Personal Info
+  const [personalDetails, setPersoanlDetails] = useState({fullName: "", number: "", email: "", location: ""})
+  //Education
+  const [education, setEducation] = useState({uniName: "", year: "", degree: "", score: ""})
 
 
   return (
     <div className='App'>
       <div className="LeftScreen">
         <NavBar/>
-        <ClearFill/>
-        <PersonalDetails fullName={fullName} setFullName={setFullName} number={number} setNumber={setNumber} email={email} setEmail={setEmail} location={location} setLocation={setLocation}/>
+        <ClearFill 
+        personalDetails={personalDetails} setPersoanlDetails={setPersoanlDetails}
+        education={education} setEducation={setEducation}
+        />
+        <PersonalDetails personalDetails={personalDetails} setPersoanlDetails={setPersoanlDetails}/>
+        <Education education={education} setEducation={setEducation}/>
+        <Experience/>
       </div>
       <div className="RightScreen">
         <div className="Preview">
-          {fullName}{number}{email}{location}
+          {personalDetails.fullName}
+          {personalDetails.number}
+          {personalDetails.email}
+          {personalDetails.location}
+          <p></p>
+          {education.uniName}
+          {education.year}
+          {education.degree}
+          {education.score}
+          
 
         </div>
       </div>
