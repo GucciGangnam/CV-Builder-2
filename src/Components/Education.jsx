@@ -29,9 +29,8 @@ export const Education = ({ education, setEducation }) => {
     }
 
     // for submit handler 
-    const handleFormSubmit=(e) => { 
+    const handleFormSubmit = (e) => {
         e.preventDefault();
-
     }
 
 
@@ -53,7 +52,7 @@ export const Education = ({ education, setEducation }) => {
                 />
             </button>
 
-            <form id="EducationForm">
+            <form id="EducationForm" style={{ display: isDropDownOpen ? 'block' : 'none' }}>
                 <p style={{ display: isDropDownOpen ? 'block' : 'none' }}>School</p>
                 <input
                     type="text"
@@ -92,13 +91,6 @@ export const Education = ({ education, setEducation }) => {
 
                 <button style={{ display: isDropDownOpen ? 'block' : 'none' }} onClick={handleFormSubmit}>Save</button>
             </form>
-
-
-
-
-
-
-
 
         </div>
     )

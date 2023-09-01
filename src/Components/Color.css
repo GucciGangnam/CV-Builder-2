@@ -1,4 +1,4 @@
-.Education{ 
+.Color{ 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,9 +9,4 @@
     margin: 25px;
     margin-top: 10px;
     padding: 10px;
-}
-
-form{ 
-    margin: 0px;
-    padding: 0px;
 }

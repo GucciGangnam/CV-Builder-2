@@ -10,6 +10,9 @@ import { PersonalDetails } from "./Components/PersonalDetails";
 import { useState } from "react";
 import { Education } from "./Components/Education";
 import { Experience } from "./Components/Experience";
+import { Layout } from "./Components/Layout";
+import { Color } from "./Components/Color";
+import { Fonts } from "./Components/Fonts";
 
 
 
@@ -19,20 +22,38 @@ const App = () => {
   const [personalDetails, setPersoanlDetails] = useState({fullName: "", number: "", email: "", location: ""})
   //Education
   const [education, setEducation] = useState({uniName: "", year: "", degree: "", score: ""})
+  // Experience
+  const [experience, setExperience] = useState({company: "", duration: "", position: "", description: ""})
 
 
   return (
     <div className='App'>
       <div className="LeftScreen">
         <NavBar/>
-        <ClearFill 
-        personalDetails={personalDetails} setPersoanlDetails={setPersoanlDetails}
-        education={education} setEducation={setEducation}
-        />
-        <PersonalDetails personalDetails={personalDetails} setPersoanlDetails={setPersoanlDetails}/>
-        <Education education={education} setEducation={setEducation}/>
-        <Experience/>
+        <div className="ContentScreen">
+          <ClearFill 
+          setPersoanlDetails={setPersoanlDetails}
+          setEducation={setEducation}
+          setExpereince={setExperience}
+          />
+          <PersonalDetails personalDetails={personalDetails} setPersoanlDetails={setPersoanlDetails}/>
+          <Education education={education} setEducation={setEducation}/>
+          <Experience experience={experience} setExperience={setExperience}/>
+        </div>
+
+        <div className="CustomizeScreen"> 
+          <Layout/>
+          <Color/>
+          <Fonts/>
+
+
+
+
+        </div>
       </div>
+
+
+
       <div className="RightScreen">
         <div className="Preview">
           {personalDetails.fullName}
@@ -44,6 +65,12 @@ const App = () => {
           {education.year}
           {education.degree}
           {education.score}
+          <p></p> 
+          {experience.company}
+          {experience.duration}
+          {experience.position}
+          {experience.description}
+          {}
           
 
         </div>
