@@ -19,32 +19,34 @@ import { Fonts } from "./Components/Fonts";
 const App = () => {
   //States
   //Personal Info
-  const [personalDetails, setPersoanlDetails] = useState({fullName: "", number: "", email: "", location: ""})
+  const [personalDetails, setPersoanlDetails] = useState({ fullName: "", number: "", email: "", location: "" })
   //Education
   const [education, setEducation] = useState([]);
   // Experience
-  const [experience, setExperience] = useState({company: "", duration: "", position: "", description: ""})
+  const [experience, setExperience] = useState([])
 
 
   return (
     <div className='App'>
       <div className="LeftScreen">
-        <NavBar/>
+        <NavBar />
         <div className="ContentScreen">
-          <ClearFill 
-          setPersoanlDetails={setPersoanlDetails}
-          setEducation={setEducation}
-          setExpereince={setExperience}
+          <ClearFill
+            setPersoanlDetails={setPersoanlDetails}
+            education={education}
+            setEducation={setEducation}
+            experience={experience}
+            setExpereince={setExperience}
           />
-          <PersonalDetails personalDetails={personalDetails} setPersoanlDetails={setPersoanlDetails}/>
-          <Education education={education} setEducation={setEducation}/>
-          <Experience experience={experience} setExperience={setExperience}/>
+          <PersonalDetails personalDetails={personalDetails} setPersoanlDetails={setPersoanlDetails} />
+          <Education education={education} setEducation={setEducation} />
+          <Experience experience={experience} setExperience={setExperience} />
         </div>
 
-        <div className="CustomizeScreen"> 
-          <Layout/>
-          <Color/>
-          <Fonts/>
+        <div className="CustomizeScreen">
+          <Layout />
+          <Color />
+          <Fonts />
 
 
 
@@ -56,13 +58,29 @@ const App = () => {
 
       <div className="RightScreen">
         <div className="Preview">
+          <h1>Personal Info</h1>
           {personalDetails.fullName}
           {personalDetails.number}
           {personalDetails.email}
           {personalDetails.location}
-          <p></p>
-          
-
+          <h1>Education</h1>
+          {education.map((school, index) => (
+            <div key={index}>
+              {school.Uniname}
+              {school.Degree}
+              {school.Year}
+              {school.Score}
+            </div>
+          ))}
+          <h1>Education</h1>
+          {experience.map((job, index) => ( 
+            <div key={index}>
+            {job.CompanyName}
+            {job.Position}
+            {job.Duration}job
+            {job.Description}
+          </div>
+          ))}
         </div>
       </div>
     </div>

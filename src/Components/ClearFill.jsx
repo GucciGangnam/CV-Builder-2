@@ -1,17 +1,38 @@
 // import styles
 import "./ClearFill.css"
 
-export const ClearFill = ({setPersoanlDetails, setEducation, setExpereince}) => { 
+export const ClearFill = ({setPersoanlDetails, education, setEducation, experience, setExpereince}) => { 
+
     const handleFillTemplate=()=>{ 
-        setPersoanlDetails({fullName: "John Smith", number: "555-555-555", email: "Johnsmith@gmail.com", location: "London, UK"})
-        setEducation({uniName: "Cambridge University, UK", year: "2015", degree: "Bsc Computer Science", score: "1st"})
-        setExpereince({company: "Lloyds Banking Group", position: "Project Manager", duration: "2015-2017", description: "Managing small to medium complex projects for group operation savings business case portfolio"})
+        
+        if (education.length || experience.length > 0){ 
+            alert("You must clear the form first")
+            return; 
+        }
+
+        setPersoanlDetails({ fullName: "John Smith", number: "555-555-555", email: "Johnsmith@gmail.com", location: "London, UK" });
+
+        const newSchool = {
+            Uniname: "Bristol University, UK",
+            Year: "2015",
+            Degree: "ComputerScience BcS",
+            Score: "1st"
+        }
+        setEducation([...education, newSchool])
+
+        const newJob = {
+            CompanyName: "Lloyds Banking Group",
+            Position: "Project Manager",
+            Duration: "2015-2017",
+            Description: "Manageing small to medium complexity projects"
+        }
+        setExpereince([...experience, newJob])
 
     }
     const handleClearTemplate=()=>{ 
-        setPersoanlDetails({fullName: "", number: "", email: "", location: ""})
-        setEducation({uniName: "", year: "", degree: "", score: ""})
-        setExpereince({company: "", position: "", duration: "", description: ""})
+        setPersoanlDetails({ fullName: "", number: "", email: "", location: "" });
+        setEducation([]);
+        setExpereince([]);
 
     }
     return( 

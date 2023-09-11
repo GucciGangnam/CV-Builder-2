@@ -6,11 +6,6 @@ import { useState, useEffect } from "react"
 
 
 // component
-
-//DELTE ME  IM JUST FOR REFERENCE
-
-//const [education, setEducation] = useState({uniName: "", year: "", degree: "", score: ""})
-
 export const Education = ({ education, setEducation }) => {
 
     const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -25,11 +20,9 @@ export const Education = ({ education, setEducation }) => {
     const [degree, setDegree] = useState("")
     const [score, setScore] = useState("")
 
-    // education object 
-
 
     // for submit handler 
-    const handleFormSubmit = (e) => {
+    const handleEducationFormSubmit = (e) => {
         e.preventDefault();
         const newSchool = {
             Uniname: uniName,
@@ -45,12 +38,8 @@ export const Education = ({ education, setEducation }) => {
         setScore("");
     }
 
-    useEffect(() => {
-        console.log(education)
-    }, [education])
-
     // handle form clear button 
-    const HandleFormClear = (e) => { 
+    const HandleEducationFormClear = (e) => { 
         e.preventDefault();
         setUniName("");
         setDegree("");
@@ -120,8 +109,8 @@ export const Education = ({ education, setEducation }) => {
                     onChange={(e) => setScore(e.target.value)}
                 />
                 <div className="EducationFormButtons">
-                    <button className="SaveEducationBTN" style={{ display: isDropDownOpen ? 'block' : 'none' }} onClick={handleFormSubmit}>Save</button>
-                    <button className="ClearButton"onClick={HandleFormClear}>Clear</button>
+                    <button className="SaveEducationBTN" style={{ display: isDropDownOpen ? 'block' : 'none' }} onClick={handleEducationFormSubmit}>Save</button>
+                    <button className="ClearButton"onClick={HandleEducationFormClear}>Clear</button>
                 </div>
             </form>
 
@@ -131,7 +120,7 @@ export const Education = ({ education, setEducation }) => {
                     {education.map((school, index) => (
                         <div key={index} className="SavedSchools">
                                 {school.Uniname}
-                                <button onClick={() => handleDeleteSchool(index)}>delete</button>
+                                <button className="ClearButton" onClick={() => handleDeleteSchool(index)}>Delete</button>
                         </div>
                     ))}
                 

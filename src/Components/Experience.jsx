@@ -7,19 +7,12 @@ import { useState } from "react"
 // component 
 export const Experience = ({ experience, setExperience }) => {
 
-    // OnChange handlers
-    const handleCompanyChange = (event) => {
-        setExperience({ ...experience, company: event.target.value });
-    }
-    const handlePositionChange = (event) => {
-        setExperience({ ...experience, position: event.target.value })
-    }
-    const handleDurationChange = (event) => {
-        setExperience({ ...experience, duration: event.target.value })
-    }
-    const handleDescriptionChange = (event) => {
-        setExperience({ ...experience, description: event.target.value })
-    }
+//field states
+
+const [companyName, setCompanyName] = useState("")
+const [position, setPosition] = useState("")
+const [duration, setDuration] = useState("")
+const [description, setDescription] = useState("")
 
 
     // drop down 
@@ -29,8 +22,36 @@ export const Experience = ({ experience, setExperience }) => {
     }
 
     // for submit handler 
-    const handleFormSubmit=(e) => { 
+    const handleExperienceFormSubmit = (e) => {
         e.preventDefault();
+
+        const newRole = {
+            CompanyName: companyName,
+            Position: position, 
+            Duration: duration, 
+            Description: description}
+
+            setExperience([...experience, newRole])
+
+            setCompanyName('');
+            setPosition('');
+            setDuration('');
+            setDescription('');
+    }
+    // form clear handler
+    const HandleExperienceFormClear =(e) => { 
+        e.preventDefault();
+        setCompanyName("");
+        setPosition("");
+        setDuration("");
+        setDescription("");
+    }
+
+    //handle delete a job 
+
+    const handleDeleteJob = (indexToDelete) => { 
+        const updatedExperience = experience.filter((job, index) => index !== indexToDelete);
+        setExperience(updatedExperience);
     }
 
     return (
@@ -49,8 +70,8 @@ export const Experience = ({ experience, setExperience }) => {
                 <input
                     type="text"
                     placeholder="Enter a company name"
-                    value={experience.company}
-                    onChange={handleCompanyChange}
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
                     style={{ display: isDropDownOpen ? 'block' : 'none' }}
                 />
 
@@ -58,8 +79,8 @@ export const Experience = ({ experience, setExperience }) => {
                 <input
                     type="text"
                     placeholder="Enter your position"
-                    value={experience.position}
-                    onChange={handlePositionChange}
+                    value={position}
+                    onChange={(e) => setPosition(e.target.value)}
                     style={{ display: isDropDownOpen ? 'block' : 'none' }}
                 />
 
@@ -67,8 +88,8 @@ export const Experience = ({ experience, setExperience }) => {
                 <input
                     type="text"
                     placeholder="Enter the duration of your role"
-                    value={experience.duration}
-                    onChange={handleDurationChange}
+                    value={duration}
+                    onChange={(e) => setDuration(e.target.value)}
                     style={{ display: isDropDownOpen ? 'block' : 'none' }}
                 />
 
@@ -76,13 +97,24 @@ export const Experience = ({ experience, setExperience }) => {
                 <input
                     type="text"
                     placeholder="Enter a description of the role"
-                    value={experience.description}
-                    onChange={handleDescriptionChange}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                     style={{ display: isDropDownOpen ? 'block' : 'none' }}
                 />
 
-                <button style={{ display: isDropDownOpen ? 'block' : 'none' }} onClick={handleFormSubmit}>Save</button>
+                <div className="EducationFormButtons">
+                    <button className="SaveEducationBTN" style={{ display: isDropDownOpen ? 'block' : 'none' }} onClick={handleExperienceFormSubmit}>Save</button>
+                    <button className="ClearButton" style={{ display: isDropDownOpen ? 'block' : 'none' }} onClick={HandleExperienceFormClear} >Clear</button>
+                </div>
             </form>
+            <div className="Jobs"> 
+                {experience.map((job, index)=>( 
+                    <div key={index} className="SavedSchools">
+                    {job.CompanyName}
+                    <button className="ClearButton" onClick={() => {handleDeleteJob(index)}}>Delete</button>
+            </div>
+                ))}
+            </div>
 
 
         </div>
