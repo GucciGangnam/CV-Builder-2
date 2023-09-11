@@ -2,10 +2,14 @@
 import "./Education.css"
 
 // import Hooks
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 // component
+
+//DELTE ME  IM JUST FOR REFERENCE
+
+//const [education, setEducation] = useState({uniName: "", year: "", degree: "", score: ""})
 
 export const Education = ({ education, setEducation }) => {
 
@@ -14,26 +18,52 @@ export const Education = ({ education, setEducation }) => {
         setIsDropDownOpen(!isDropDownOpen);
     }
 
-    // Input Handlers
-    const handleUniNameChange = (event) => {
-        setEducation({ ...education, uniName: event.target.value })
-    }
-    const handleYearChange = (event) => {
-        setEducation({ ...education, year: event.target.value })
-    }
-    const handleDegreeChange = (event) => {
-        setEducation({ ...education, degree: event.target.value })
-    }
-    const handleScoreChange = (event) => {
-        setEducation({ ...education, score: event.target.value })
-    }
+    //field states
+
+    const [uniName, setUniName] = useState("")
+    const [year, setYear] = useState("")
+    const [degree, setDegree] = useState("")
+    const [score, setScore] = useState("")
+
+    // education object 
+
 
     // for submit handler 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        const newSchool = {
+            Uniname: uniName,
+            Year: year,
+            Degree: degree,
+            Score: score
+        }
+
+        setEducation([...education, newSchool])
+        setUniName("");
+        setDegree("");
+        setYear("");
+        setScore("");
     }
 
+    useEffect(() => {
+        console.log(education)
+    }, [education])
 
+    // handle form clear button 
+    const HandleFormClear = (e) => { 
+        e.preventDefault();
+        setUniName("");
+        setDegree("");
+        setYear("");
+        setScore("");
+    }
+
+    //handle delete school 
+    const handleDeleteSchool = (indexToDelete) => {
+        const updatedEducation = education.filter((school, index) => index !== indexToDelete);
+        setEducation(updatedEducation);
+    };
+    
 
 
 
@@ -57,9 +87,9 @@ export const Education = ({ education, setEducation }) => {
                 <input
                     type="text"
                     placeholder="Enter a university name"
-                    value={education.uniName}
-                    onChange={handleUniNameChange}
                     style={{ display: isDropDownOpen ? 'block' : 'none' }}
+                    value={uniName}
+                    onChange={(e) => setUniName(e.target.value)}
                 />
 
                 <p style={{ display: isDropDownOpen ? 'block' : 'none' }}>Year</p>
@@ -67,8 +97,9 @@ export const Education = ({ education, setEducation }) => {
                     type="text"
                     placeholder="Enter your qualification"
                     style={{ display: isDropDownOpen ? 'block' : 'none' }}
-                    value={education.year}
-                    onChange={handleYearChange}
+                    value={year}
+                    onChange={(e) => setYear(e.target.value)}
+
                 />
 
                 <p style={{ display: isDropDownOpen ? 'block' : 'none' }}>Degree</p>
@@ -76,8 +107,8 @@ export const Education = ({ education, setEducation }) => {
                     type="text"
                     placeholder="Enter your graduation year"
                     style={{ display: isDropDownOpen ? 'block' : 'none' }}
-                    value={education.degree}
-                    onChange={handleDegreeChange}
+                    value={degree}
+                    onChange={(e) => setDegree(e.target.value)}
                 />
 
                 <p style={{ display: isDropDownOpen ? 'block' : 'none' }}>Score</p>
@@ -85,13 +116,28 @@ export const Education = ({ education, setEducation }) => {
                     type="text"
                     placeholder="Enter your score"
                     style={{ display: isDropDownOpen ? 'block' : 'none' }}
-                    value={education.score}
-                    onChange={handleScoreChange}
+                    value={score}
+                    onChange={(e) => setScore(e.target.value)}
                 />
-
-                <button style={{ display: isDropDownOpen ? 'block' : 'none' }} onClick={handleFormSubmit}>Save</button>
+                <div className="EducationFormButtons">
+                    <button className="SaveEducationBTN" style={{ display: isDropDownOpen ? 'block' : 'none' }} onClick={handleFormSubmit}>Save</button>
+                    <button className="ClearButton"onClick={HandleFormClear}>Clear</button>
+                </div>
             </form>
 
+            <div className="Schools">
+
+                
+                    {education.map((school, index) => (
+                        <div key={index} className="SavedSchools">
+                                {school.Uniname}
+                                <button onClick={() => handleDeleteSchool(index)}>delete</button>
+                        </div>
+                    ))}
+                
+
+
+            </div>
         </div>
     )
 }

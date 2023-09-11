@@ -21,7 +21,7 @@ const App = () => {
   //Personal Info
   const [personalDetails, setPersoanlDetails] = useState({fullName: "", number: "", email: "", location: ""})
   //Education
-  const [education, setEducation] = useState({uniName: "", year: "", degree: "", score: ""})
+  const [education, setEducation] = useState([]);
   // Experience
   const [experience, setExperience] = useState({company: "", duration: "", position: "", description: ""})
 
@@ -61,16 +61,6 @@ const App = () => {
           {personalDetails.email}
           {personalDetails.location}
           <p></p>
-          {education.uniName}
-          {education.year}
-          {education.degree}
-          {education.score}
-          <p></p> 
-          {experience.company}
-          {experience.duration}
-          {experience.position}
-          {experience.description}
-          {}
           
 
         </div>

@@ -35,7 +35,7 @@ export const PersonalDetails = ({ personalDetails, setPersoanlDetails }) => {
                 />
             </button>
 
-
+        <form>
             <p style={{ display: isDropDownOpen ? 'block' : 'none' }}>Full Name</p>
             <input
                 type="text"
@@ -71,6 +71,7 @@ export const PersonalDetails = ({ personalDetails, setPersoanlDetails }) => {
                 onChange={handleLocationChange}
                 style={{ display: isDropDownOpen ? 'block' : 'none' }}
             />
+        </form>
 
 
         </div>
