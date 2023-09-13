@@ -28,7 +28,21 @@
         padding: 10px;
         border: none;
         cursor: pointer;
+        font-size: 1rem;
+    }
+    #FontsButton1{ 
+        font-family: 'Roboto', sans-serif;
+    }
+    #FontsButton2{ 
+        font-family: 'Lora', serif;
+    }
+    #FontsButton3{ 
+        font-family: 'Courier New', monospace;
     }
         .FontsButton:hover{ 
+            box-shadow: rgba(18, 18, 20, 0.2) 10px 10px 10px 0px;
+        }
+        .FontsButton.Selected{ 
+            background: rgb(243, 243, 243);
             box-shadow: rgba(18, 18, 20, 0.2) 10px 10px 10px 0px;
         }

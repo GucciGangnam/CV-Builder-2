@@ -2,12 +2,11 @@
 import "./App.css"
 
 //Import Hooks
-
+import { useState } from "react";
 // Import components
 import { NavBar } from "./Components/NavBar";
 import { ClearFill } from "./Components/ClearFill";
 import { PersonalDetails } from "./Components/PersonalDetails";
-import { useState } from "react";
 import { Education } from "./Components/Education";
 import { Experience } from "./Components/Experience";
 import { Layout } from "./Components/Layout";
@@ -24,6 +23,8 @@ const App = () => {
   const [education, setEducation] = useState([]);
   // Experience
   const [experience, setExperience] = useState([])
+  // fonts state
+  const [font, setFont] = useState('Roboto')
 
 
   return (
@@ -46,7 +47,7 @@ const App = () => {
         <div className="CustomizeScreen">
           <Layout />
           <Color />
-          <Fonts />
+          <Fonts font={font} setFont={setFont} />
 
 
 
@@ -56,31 +57,58 @@ const App = () => {
 
 
 
-      <div className="RightScreen">
+      <div className="RightScreen" style={{
+          fontFamily:
+          font === 'Roboto' ? 'Roboto, sans-serif' :
+          font === 'Lora' ? 'Lora, serif' :
+          font === 'Courier New' ? 'Courier New, monospace' : 'inherit'
+        }}>
         <div className="Preview">
-          <h1>Personal Info</h1>
-          {personalDetails.fullName}
-          {personalDetails.number}
-          {personalDetails.email}
-          {personalDetails.location}
-          <h1>Education</h1>
-          {education.map((school, index) => (
-            <div key={index}>
-              {school.Uniname}
-              {school.Degree}
-              {school.Year}
-              {school.Score}
+          <div className="PersonalInfoPreview">
+            <h1>{personalDetails.fullName}</h1>
+            <div className="PersonalDetailsPreview">
+              <div className="ContactDeatils">{"☎" + personalDetails.number}</div>
+              <div className="ContactDeatils">{"✉" + personalDetails.email}</div>
+              <div className="ContactDeatils">{"⌖" + personalDetails.location}</div>
+            </div>
+          </div>
+          
+          <div className="EDUandEXP">
+           <div className="EducationPreview">
+            <h1>Education</h1>
+            {education.map((school, index) => (
+              <div className="EducationDetailsPreview" key={index}>
+                <div className="NameAndDeg">
+                <div>{school.Uniname}</div>
+                <div>{school.Degree}</div>
+                </div>
+
+                <div className="YearAndScore">
+                  <div>{school.Year}</div>
+                  <div>{school.Score}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="ExperiencePreview">
+          <h1>Experience</h1>
+          {experience.map((job, index) => (
+            <div className="EducationDetailsPreview" key={index}>
+              <div className="NameAndDeg">
+                <div>{job.CompanyName}</div>
+                <div>{job.Position}</div>
+                </div>
+
+                <div className="YearAndScore">
+                  <div>{job.Duration}</div>
+                  <div>{job.Description}</div>
+                </div>
             </div>
           ))}
-          <h1>Education</h1>
-          {experience.map((job, index) => ( 
-            <div key={index}>
-            {job.CompanyName}
-            {job.Position}
-            {job.Duration}job
-            {job.Description}
           </div>
-          ))}
+          </div> 
+          
         </div>
       </div>
     </div>

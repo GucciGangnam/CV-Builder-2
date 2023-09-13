@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
 .App{ 
   border: 1px solid pink;;
   display: flex;
   justify-content: center;
+
 }
 
 .LeftScreen{ 
@@ -16,13 +20,92 @@
   display: flex;
   flex-direction: column;
 }
+
+/*PREVIEW SCREEN*/
+  /*PREVIEW SCREEN*/
+    /*PREVIEW SCREEN*/
+      /*PREVIEW SCREEN*/
+
+.PersonalInfoPreview{
+  min-height: 20%;
+  border-bottom: 2px groove rgba(0, 0, 0, 0.142);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+  .PersonalDetailsPreview{ 
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+    .ContactDeatils{ 
+      display: flex;
+      justify-content: center;
+      min-width: 30%;;
+
+    }
+
+.EducationPreview{
+  border-bottom: 2px groove rgba(0, 0, 0, 0.142);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ExperiencePreview{
+  border-bottom: 2px groove rgba(0, 0, 0, 0.142);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  .EducationDetailsPreview{ 
+    width: 90%;
+    display: flex;
+    padding: 10px;
+  }
+    .NameAndDeg{ 
+      min-width: 50%;
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+      gap: 10px;
+    }
+    .YearAndScore{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+
   .Preview{ 
     min-width: 500px;
     aspect-ratio: 1/1.14;
     background-color: white;
     box-shadow: 2px 2px 5px gray;
     margin: 25px;
+
+    display: flex;
+    flex-direction: column;
   }
+
+
+      /*PREVIEW SCREEN*/
+    /*PREVIEW SCREEN*/
+  /*PREVIEW SCREEN*/
+/*PREVIEW SCREEN*/
+
+  .ContentScreen{
+
+  }
+
+
+  .CustomizeScreen{
+    display: none;
+  }
+
 
   /*MEDIA QUERY*/
   @media (max-width: 1000px) {

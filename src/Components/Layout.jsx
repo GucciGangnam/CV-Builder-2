@@ -3,6 +3,7 @@ import "./Layout.css"
 
 // component
 export const Layout = () => { 
+
     return ( 
         <div className="Layout">
             <h2>Layout</h2>
